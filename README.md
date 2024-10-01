@@ -1,1 +1,1 @@
-# wp-settings-tutorial-code
+# WP Settings Tutorial Code
