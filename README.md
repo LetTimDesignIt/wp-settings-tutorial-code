@@ -1,16 +1,22 @@
 # WP Settings Tutorial Sourcecode
 
-This is the source code for the WordPress Settings series found on my blog found at https://timscheman.com/blog/category/wordpress-settings/. Each new article will have a link to find the source code here.
+### Project Introduction
 
+This repository contains the source code for the *WordPress Settings* series featured on my blog at [timscheman.com](https://timscheman.com/blog/category/wordpress-settings/). Each article in the series will include a link to the corresponding source code found here, making it easy to follow along and implement the concepts discussed.
 
-## Installation
+### Installation and Usage
 
-To use the code either clone it or donwload the zip file.  All functions will be namespaced with "ltdi". Please be sure to change the namespace to something unique for your project.
+1. **Clone or Download:**  
+   You can either clone the repository or download the ZIP file to get started.
+2. **Namespace Customization:**  
+   All functions in the code are currently namespaced with `ltdi`. Be sure to change this namespace to something unique that fits your project to avoid potential conflicts.
+3. **Translation Domain:**  
+   The translation functions are set with the domain `'ltdi'`. Make sure to update this to a custom domain specific to your project to ensure proper localization.
 
-## Contributing
+### Contributing
 
-As this is example code from a blog series, pull requests will not be addressed. If you see something that needs to be changed, please feel free to emai
+Since this is example code from a blog series, we are not accepting pull requests at this time.
 
-## License
+### License
 
 [MIT](https://choosealicense.com/licenses/mit/)
