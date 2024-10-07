@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Source code for first post in the WordPress settings series.  
+ * Source code for second post in the WordPress settings series.  
  * @link    https://timscheman.com/blog/add-wordpress-settings-without-a-plugin/
  * @author  https://timscheman.com/
  */

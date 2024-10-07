@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Source code for first post in the WordPress settings series.  
+ * Source code for third post in the WordPress settings series.  
  * @link    https://timscheman.com/blog/adding-a-textarea-input-to-wordpress-settings/
  * @author  https://timscheman.com/
  */
