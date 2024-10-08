@@ -92,7 +92,7 @@ function ltdi_section_introduction()
 function ltdi_get_text_input($args)
 {
     $settings = \get_option('ltdi_theme_settings');
-    $value = !empty($settings[$args['label_for']]) ?: '';
+    $value    = $settings[$args['label_for']] ?? '';
 
     printf(
         '<input type="text" id="%1$s" name="ltdi_theme_settings[%1$s]" value="%2$s" />',
