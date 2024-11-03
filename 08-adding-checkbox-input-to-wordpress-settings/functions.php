@@ -128,9 +128,6 @@ function ltdi_register_settings()
         ]
     );
 
-    /**
-     * New Code: adding Radio Button input via the callback "ltdi_get_radio_input".
-     */
     add_settings_field(
         'setting_radio_button_field',
         __('Radio Button Setting', 'ltdi'),
@@ -151,6 +148,35 @@ function ltdi_register_settings()
                 ],
                 [
                     'value' => 'value-03',
+                    'label' => 'Option Three'
+                ]
+            ]
+        ]
+    );
+
+    /**
+     * New Code: adding Checkbox input via the callback "ltdi_get_checkbox_input".
+     */
+    add_settings_field(
+        'setting_checkbox_field',
+        __('Checkbox Setting', 'ltdi'),
+        'ltdi_get_checkbox_input',
+        'ltdi_theme_settings',
+        'ltdi_theme_settings_section',
+        [
+            'label_for' => 'setting_checkbox_field',
+            'class'     => 'setting_checkbox_field',
+            'options' => [
+                [
+                    'value' => '1',
+                    'label' => 'Option One'
+                ],
+                [
+                    'value' => '2',
+                    'label' => 'Option Two'
+                ],
+                [
+                    'value' => '3',
                     'label' => 'Option Three'
                 ]
             ]
@@ -239,9 +265,6 @@ function ltdi_get_select_input($args)
 	}
 }
 
-/**
- * New Code: "ltdi_get_radio_input" callback that builds the HTML for the Radio Button input.
- */
 function ltdi_get_radio_input($args)
 {
     $nameAttr = "ltdi_theme_settings[{$args['label_for']}]";
@@ -263,15 +286,53 @@ function ltdi_get_radio_input($args)
     echo '</fieldset>';
 }
 
+/**
+ * New Code: "ltdi_get_checkbox_input" callback that builds the HTML for the Checkbox input.
+ */
+function ltdi_get_checkbox_input($args)
+{
+    $settings = \get_option('ltdi_theme_settings');
+    $selected = false;
+    
+    echo '<fieldset>';
+    foreach ($args['options'] as $option) {
+        
+        $nameAttr = "ltdi_theme_settings[{$args['label_for']}][]";
+
+		if (!empty($settings[$args['label_for']])) {
+			$selected = in_array($option['value'], $settings[$args['label_for']]);
+		}
+
+        $checked = \checked($selected, true, false);
+
+        printf(
+            '<input type="checkbox" name="%1$s" value="%2$s" %5$s /><label for="%4$s">%3$s</label>',
+            $nameAttr,
+            $option['value'],
+            $option['label'],
+            $args['label_for'],
+            $checked
+        );
+    }
+    echo '</fieldset>';
+}
+
 function ltdi_setting_sanitization($input)
 {
     $output = [];
    
    foreach($input as $key => $value) {
+        if (!isset($input[$key])) {
+            continue;
+        }
 
-       if (isset( $input[$key])) {
-           $output[$key] = strip_tags(stripslashes($input[ $key ]));
-       }
+        if (is_array($value)) {
+			foreach($value as $index => $innerValue) {
+				$output[$key][$index] = strip_tags(stripslashes($innerValue) );
+			}
+		} else {
+			$output[$key] = strip_tags(stripslashes($input[$key]));
+		}
    }
 
    return apply_filters('ltdi_setting_validation', $output, $input);
