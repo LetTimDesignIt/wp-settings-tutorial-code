@@ -299,9 +299,9 @@ function ltdi_get_checkbox_input($args)
         
         $nameAttr = "ltdi_theme_settings[{$args['label_for']}][]";
 
-		if (!empty($settings[$args['label_for']])) {
-			$selected = in_array($option['value'], $settings[$args['label_for']]);
-		}
+        if (!empty($settings[$args['label_for']])) {
+            $selected = in_array($option['value'], $settings[$args['label_for']]);
+        }
 
         $checked = \checked($selected, true, false);
 
@@ -327,12 +327,12 @@ function ltdi_setting_sanitization($input)
         }
 
         if (is_array($value)) {
-			foreach($value as $index => $innerValue) {
-				$output[$key][$index] = strip_tags(stripslashes($innerValue) );
-			}
-		} else {
-			$output[$key] = strip_tags(stripslashes($input[$key]));
-		}
+            foreach($value as $index => $innerValue) {
+                $output[$key][$index] = strip_tags(stripslashes($innerValue) );
+            }
+        } else {
+            $output[$key] = strip_tags(stripslashes($input[$key]));
+        }
    }
 
    return apply_filters('ltdi_setting_validation', $output, $input);
